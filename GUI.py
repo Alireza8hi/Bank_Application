@@ -1323,39 +1323,50 @@ def show_account_info(result):
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][0]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="نام صاحب حساب:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][1]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="نام خانوادگی صاحب حساب:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][2]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="ایمیل صاحب حساب:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][3]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="شماره همراه صاحب حساب:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][4]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="تاریخ افتتاح:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][5]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="موجودی:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][6]}")
     message_label.pack()
-    message_label = tk.Label(message_window, text="وضعیت حساب:")
+
+    message_label = tk.Label(message_window, text="وام فعال:")
     message_label.pack()
-    state = "مسدود" if result[0][7] == 0 else "فعال"
-    message_label = tk.Label(message_window, text=f"{state}")
+    active_loan_state = result[0][7]
+    if result[0][7] is None:
+        active_loan_state = "وام فعالی وجود ندارد"
+    message_label = tk.Label(message_window, text=f"{active_loan_state}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="تاریخ مسدودیت:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][8]}")
     message_label.pack()
+
     message_label = tk.Label(message_window, text="دلیل مسدودیت:")
     message_label.pack()
     message_label = tk.Label(message_window, text=f"{result[0][9]}")
