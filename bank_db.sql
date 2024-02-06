@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS loan
 drop table loan;
 start transaction ;
     insert into user (user_name,first_name,last_name,password,email,phone_number)
-    values ('admin','admin','admin','admin','nima.jsdjksdhfa','09123456789');
+    values ('admin','admin','admin','4eb334944825e750d5e62706ddb02c4b7c567596319a0bb3ba3ededd74f4b3ff','admin@gmail.com','09011111111');
 commit;
 
 CREATE TABLE IF NOT EXISTS installment
