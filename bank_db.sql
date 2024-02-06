@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS user
     email varchar(256) unique ,
     phone_number varchar(11) unique
 );
-drop table user;
 
 CREATE TABLE IF NOT EXISTS account
 (
@@ -27,8 +26,6 @@ CREATE TABLE IF NOT EXISTS account
     foreign key (user_id) references User(user_id)
 );
 
-
-drop table account;
 CREATE TABLE IF NOT EXISTS transaction
 (
     user_id int,
@@ -44,8 +41,6 @@ CREATE TABLE IF NOT EXISTS transaction
     foreign key (source_account_number) references Account(account_number)
 );
 
-
-drop table transaction;
 CREATE TABLE IF NOT EXISTS loan
 (
     loan_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -60,7 +55,6 @@ CREATE TABLE IF NOT EXISTS loan
     foreign key (account_number) references Account(account_number)
 );
 
-drop table loan;
 start transaction ;
     insert into user (user_name,first_name,last_name,password,email,phone_number)
     values ('admin','admin','admin','4eb334944825e750d5e62706ddb02c4b7c567596319a0bb3ba3ededd74f4b3ff','admin@gmail.com','09011111111');
@@ -80,8 +74,6 @@ CREATE TABLE IF NOT EXISTS installment
     foreign key (loan_id) references loan(loan_id)
 );
 
-drop table installment;
-
 create function check_email
 (
     input_email CHAR(255)
@@ -98,8 +90,6 @@ begin
     end if;
     return x;
 end;
-
-select check_email("nima@gamil.com");
 
 create function check_password
 (
@@ -141,9 +131,7 @@ begin
     end if;
     return x;
 end;
-drop function check_phone_number;
 
-select check_phone_number("09059878181");
 
 create function check_username
 (
@@ -185,7 +173,6 @@ begin
 
 end;
 
-select check_username("123");
 
 create function signup
 (
@@ -217,8 +204,7 @@ begin
     end if;
     return x;
 end;
-drop function signup;
-select signup("nima","zamani","Nima5977","xxkjkasdfh","nima.1381.zamani@vxxcv.com","09059878081");
+
 
 delimiter //
 create procedure all_users
@@ -254,8 +240,6 @@ begin
     return x;
 end;
 
-select make_admin(5,"Lionima");
-
 
 create function is_admin
 (
@@ -276,7 +260,6 @@ begin
     return x;
 end;
 
-select is_admin(5);
 
 CREATE function login
 (
@@ -294,7 +277,6 @@ BEGIN
                u.user_name=input_username;
     return x;
 END;
-drop function login;
 
 create function change_password
 (
@@ -319,8 +301,6 @@ begin
     end if;
     return x;
 end;
-
-drop function change_password;
 
 
 create function add_admin
@@ -517,8 +497,6 @@ begin
     return x;
 end;
 
-
-
 delimiter //
 create procedure all_accounts
 (
@@ -568,8 +546,6 @@ begin
 end//;
 delimiter ;
 
-drop procedure get_recent_transaction;
-
 delimiter //
 create procedure get_period_transaction
 (
@@ -604,8 +580,6 @@ begin
 end//;
 
 delimiter ;
-drop procedure get_period_transaction;
-call get_period_transactions(4,1,'2021-01-01','2021-12-31');
 
 
 delimiter //
@@ -624,8 +598,6 @@ begin
                                          where u.user_id = input_user_id)=1);
 end//;
 delimiter ;
-drop procedure account_info;
-call account_info(5,1);
 
 create function get_first_name
 (
@@ -642,9 +614,6 @@ begin
         return x;
 end;
 
-drop function get_first_name;
-
-select get_first_name(4);
 
 create function get_full_name
 (
@@ -684,7 +653,6 @@ begin
     return x;
 end;
 
-select is_account_for_user(5,5);
 
 create function check_block_account
 (
@@ -715,8 +683,6 @@ begin
     return x;
 end;
 
-drop function check_block_account;
-select check_block_account(12,1);
 
 create function check_amount
 (
@@ -775,10 +741,6 @@ begin
     return x;
 end;
 
-drop function block_account;
-
-select block_account(5,3,"I am the admin");
-
 
 delimiter //
 create procedure money_transfer
@@ -836,9 +798,6 @@ begin
     select x;
 end;
 delimiter ;
-
-drop procedure money_transfer;
-call money_transfer(1,3,1000);
 
 create function check_loan_amount
 (
@@ -1015,8 +974,6 @@ begin
     where L.user_id = input_user_id;
 end//;
 delimiter ;
-
-drop procedure get_loans;
 
 create function has_loan
 (

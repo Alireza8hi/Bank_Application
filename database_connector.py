@@ -191,5 +191,3 @@ def add_account(user_id, user_id_for_account):
 
 def add_admin(user_id, user_id_for_admin):
     return call_function("add_admin", user_id, user_id_for_admin)
-
-
