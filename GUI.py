@@ -47,12 +47,12 @@ def login_page(parent_page):
                              command=lambda: login(login_window, username_entry.get(),
                                                    password_entry.get()))
     login_button.config(width=8)
-    login_button.pack()
+    login_button.pack(pady=10)
 
     back_button = tk.Button(login_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, login_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     login_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -125,12 +125,12 @@ def register_page(parent_page):
                                                          r_password_entry.get(), phone_number_entry.get(),
                                                          email_entry.get()))
     register_button.config(width=8)
-    register_button.pack()
+    register_button.pack(pady=10)
 
     back_button = tk.Button(register_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, register_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     register_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -148,7 +148,7 @@ def admin_select_page(parent_page, user_id):
 
     message_window = tk.Toplevel(parent_page)
     message_window.title("صفحه انتخاب پنل")
-    center_window(message_window, 200, 100)
+    center_window(message_window, 200, 120)
 
     message_label = tk.Label(message_window, text="پنل مورد نظر را انتخاب کنید!")
     message_label.pack()
@@ -164,7 +164,7 @@ def admin_select_page(parent_page, user_id):
     back_button = tk.Button(message_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, message_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     message_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -277,7 +277,7 @@ def get_accounts_page(parent_page, user_id):
     back_button = tk.Button(get_accounts_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, get_accounts_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     get_accounts_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -387,7 +387,7 @@ def transaction_page(user_window, user_id):
     back_button = tk.Button(transaction_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(user_window, transaction_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     transaction_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -416,7 +416,7 @@ def result_transactions_page(parent_page, result):
     back_button = tk.Button(show_transactions_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, show_transactions_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     show_transactions_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -469,7 +469,7 @@ def get_recent_transactions_page(user_window, user_id):
     back_button = tk.Button(recent_transactions_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(user_window, recent_transactions_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     recent_transactions_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -526,7 +526,7 @@ def get_period_transactions_page(user_window, user_id):
     back_button = tk.Button(period_transactions_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(user_window, period_transactions_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     period_transactions_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -603,7 +603,7 @@ def block_account_page(user_window, user_id):
     back_button = tk.Button(block_account_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(user_window, block_account_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     block_account_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -636,7 +636,7 @@ def get_loans_page(parent_page, user_id):
     back_button = tk.Button(show_loans_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, show_loans_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     show_loans_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -701,7 +701,7 @@ def loan_score_page(parent_window, user_id):
     back_button = tk.Button(loan_score_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, loan_score_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     loan_score_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -806,8 +806,8 @@ def loan_application_page(parent_window, user_id):
 
     back_button = tk.Button(loan_application_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, loan_application_window))
-    back_button.config(width=20)
-    back_button.pack()
+    back_button.config(width=8)
+    back_button.pack(pady=10)
 
     loan_application_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -845,7 +845,7 @@ def result_installments_page(parent_page, result, result2, result3):
     back_button = tk.Button(show_installments_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, show_installments_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     show_installments_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -895,7 +895,7 @@ def list_of_installment_page(parent_window, user_id):
     back_button = tk.Button(installment_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, installment_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     installment_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -968,7 +968,7 @@ def pay_installment_page(parent_window, user_id):
     back_button = tk.Button(pay_installment_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, pay_installment_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     pay_installment_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1006,7 +1006,7 @@ def loans_page(parent_page, user_id):
 
     back_button = tk.Button(loans_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, loans_window))
-    back_button.config(width=15)
+    back_button.config(width=8)
     back_button.pack(pady=20)
 
     loans_window.protocol("WM_DELETE_WINDOW", on_closing)
@@ -1096,7 +1096,7 @@ def change_password_page(user_window, user_id):
     back_button = tk.Button(change_password_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(user_window, change_password_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     change_password_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1209,7 +1209,7 @@ def add_account_page(admin_window, user_id):
     admin_window.withdraw()
     add_account_window = tk.Toplevel(admin_window)
     add_account_window.title("صفحه افزودن حساب")
-    center_window(add_account_window, 400, 300)
+    center_window(add_account_window, 300, 200)
 
     username_label = tk.Label(add_account_window, text="نام کاربری یوزر مورد نظر:")
     username_label.pack()
@@ -1226,7 +1226,7 @@ def add_account_page(admin_window, user_id):
     back_button = tk.Button(add_account_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(admin_window, add_account_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     add_account_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1279,7 +1279,7 @@ def add_admin_page(admin_window, user_id):
     admin_window.withdraw()
     add_admin_window = tk.Toplevel(admin_window)
     add_admin_window.title("صفحه افزودن ادمین")
-    center_window(add_admin_window, 400, 300)
+    center_window(add_admin_window, 300, 200)
 
     username_label = tk.Label(add_admin_window, text="نام کاربری یوزر مورد نظر:")
     username_label.pack()
@@ -1296,7 +1296,7 @@ def add_admin_page(admin_window, user_id):
     back_button = tk.Button(add_admin_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(admin_window, add_admin_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     add_admin_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1327,7 +1327,7 @@ def get_users_info_page(parent_page, user_id):
     back_button = tk.Button(get_users_info_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_page, get_users_info_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     get_users_info_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1348,7 +1348,7 @@ def get_user_accounts_page(parent_window, user_id):
     parent_window.withdraw()
     get_user_accounts_window = tk.Toplevel(parent_window)
     get_user_accounts_window.title("صفحه حساب های هر کاربر")
-    center_window(get_user_accounts_window, 400, 300)
+    center_window(get_user_accounts_window, 300, 200)
 
     user_name_label = tk.Label(get_user_accounts_window, text="نام کاربری کاربر مورد نظر:")
     user_name_label.pack()
@@ -1365,7 +1365,7 @@ def get_user_accounts_page(parent_window, user_id):
     back_button = tk.Button(get_user_accounts_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, get_user_accounts_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     get_user_accounts_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1454,7 +1454,7 @@ def get_account_info_page(parent_window, user_id):
     parent_window.withdraw()
     get_account_info_window = tk.Toplevel(parent_window)
     get_account_info_window.title("صفحه مشخصات حساب")
-    center_window(get_account_info_window, 400, 300)
+    center_window(get_account_info_window, 300, 200)
 
     account_number_label = tk.Label(get_account_info_window, text="شماره حساب مورد نظر:")
     account_number_label.pack()
@@ -1471,7 +1471,7 @@ def get_account_info_page(parent_window, user_id):
     back_button = tk.Button(get_account_info_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, get_account_info_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     get_account_info_window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1492,7 +1492,7 @@ def get_user_loans_page(parent_window, user_id):
     parent_window.withdraw()
     get_user_loans_window = tk.Toplevel(parent_window)
     get_user_loans_window.title("صفحه وام های هر کاربر")
-    center_window(get_user_loans_window, 400, 300)
+    center_window(get_user_loans_window, 300, 200)
 
     user_name_label = tk.Label(get_user_loans_window, text="نام کاربری کاربر مورد نظر:")
     user_name_label.pack()
@@ -1509,7 +1509,7 @@ def get_user_loans_page(parent_window, user_id):
     back_button = tk.Button(get_user_loans_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, get_user_loans_window))
     back_button.config(width=8)
-    back_button.pack()
+    back_button.pack(pady=10)
 
     get_user_loans_window.protocol("WM_DELETE_WINDOW", on_closing)
 
