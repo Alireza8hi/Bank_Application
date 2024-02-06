@@ -358,7 +358,7 @@ def transaction_page(user_window, user_id):
     user_window.withdraw()
     transaction_window = tk.Toplevel(user_window)
     transaction_window.title("صفحه انتقال وجه")
-    center_window(transaction_window, 400, 300)
+    center_window(transaction_window, 300, 200)
 
     source_account_number_label = tk.Label(transaction_window, text="شماره حساب مبدا:")
     source_account_number_label.pack()
@@ -445,7 +445,7 @@ def get_recent_transactions_page(user_window, user_id):
     user_window.withdraw()
     recent_transactions_window = tk.Toplevel(user_window)
     recent_transactions_window.title("صفحه گردش حساب اخیر")
-    center_window(recent_transactions_window, 400, 300)
+    center_window(recent_transactions_window, 300, 200)
 
     account_number_label = tk.Label(recent_transactions_window, text="شماره حساب مورد نظر:")
     account_number_label.pack()
@@ -496,7 +496,7 @@ def get_period_transactions_page(user_window, user_id):
     user_window.withdraw()
     period_transactions_window = tk.Toplevel(user_window)
     period_transactions_window.title("صفحه گردش حساب اخیر")
-    center_window(period_transactions_window, 400, 300)
+    center_window(period_transactions_window, 300, 200)
 
     account_number_label = tk.Label(period_transactions_window, text="شماره حساب مورد نظر:")
     account_number_label.pack()
@@ -581,7 +581,7 @@ def block_account_page(user_window, user_id):
     user_window.withdraw()
     block_account_window = tk.Toplevel(user_window)
     block_account_window.title("صفحه مسدود کردن حساب")
-    center_window(block_account_window, 400, 300)
+    center_window(block_account_window, 300, 200)
 
     account_number_label = tk.Label(block_account_window, text="شماره حساب مورد نظر:")
     account_number_label.pack()
@@ -685,7 +685,7 @@ def loan_score_page(parent_window, user_id):
     parent_window.withdraw()
     loan_score_window = tk.Toplevel(parent_window)
     loan_score_window.title("صفحه امتیاز وام")
-    center_window(loan_score_window, 400, 300)
+    center_window(loan_score_window, 300, 200)
 
     account_number_label = tk.Label(loan_score_window, text="شماره حساب مورد نظر:")
     account_number_label.pack()
@@ -775,7 +775,7 @@ def loan_application_page(parent_window, user_id):
                                   text="محاسبه امتیاز وام", command=lambda: loan_score(loan_application_window,
                                                                                        account_number_entry.get(),
                                                                                        user_id))
-    loan_score_button.config(width=8)
+    loan_score_button.config(width=15)
     loan_score_button.pack()
 
     amount_label = tk.Label(loan_application_window, text="مبلغ درخواستی وام:")
@@ -787,26 +787,26 @@ def loan_application_page(parent_window, user_id):
                              text="وام 6 ماهه(15 درصد سود)",
                              command=lambda: loan_application(parent_window, loan_application_window, 1,
                                                               account_number_entry.get(), amount_entry.get(), user_id))
-    loan1_button.config(width=8)
+    loan1_button.config(width=20)
     loan1_button.pack()
 
     loan2_button = tk.Button(loan_application_window,
                              text="وام 12 ماهه(20 درصد سود)",
                              command=lambda: loan_application(parent_window, loan_application_window, 2,
                                                               account_number_entry.get(), amount_entry.get(), user_id))
-    loan2_button.config(width=8)
+    loan2_button.config(width=20)
     loan2_button.pack()
 
     loan3_button = tk.Button(loan_application_window,
                              text="وام 18 ماهه(25 درصد سود)",
                              command=lambda: loan_application(parent_window, loan_application_window, 3,
                                                               account_number_entry.get(), amount_entry.get(), user_id))
-    loan3_button.config(width=8)
+    loan3_button.config(width=20)
     loan3_button.pack()
 
     back_button = tk.Button(loan_application_window, text="بازگشت", bg="orange",
                             command=lambda: go_back(parent_window, loan_application_window))
-    back_button.config(width=8)
+    back_button.config(width=20)
     back_button.pack()
 
     loan_application_window.protocol("WM_DELETE_WINDOW", on_closing)
@@ -879,7 +879,7 @@ def list_of_installment_page(parent_window, user_id):
     parent_window.withdraw()
     installment_window = tk.Toplevel(parent_window)
     installment_window.title("صفحه اقساط وام")
-    center_window(installment_window, 400, 300)
+    center_window(installment_window, 300, 200)
 
     loan_number_label = tk.Label(installment_window, text="شماره وام مورد نظر:")
     loan_number_label.pack()
@@ -950,7 +950,7 @@ def pay_installment_page(parent_window, user_id):
     parent_window.withdraw()
     pay_installment_window = tk.Toplevel(parent_window)
     pay_installment_window.title("صفحه پرداخت قسط")
-    center_window(pay_installment_window, 400, 300)
+    center_window(pay_installment_window, 300, 200)
 
     loan_number_label = tk.Label(pay_installment_window, text="شماره وام مورد نظر:")
     loan_number_label.pack()
@@ -962,7 +962,7 @@ def pay_installment_page(parent_window, user_id):
                                                                                           pay_installment_window,
                                                                                           loan_number_entry.get(),
                                                                                           user_id))
-    pay_installment_button.config(width=8)
+    pay_installment_button.config(width=10)
     pay_installment_button.pack()
 
     back_button = tk.Button(pay_installment_window, text="بازگشت", bg="orange",
@@ -1067,7 +1067,7 @@ def change_password_page(user_window, user_id):
     user_window.withdraw()
     change_password_window = tk.Toplevel(user_window)
     change_password_window.title("صفحه تغییر رمز عبور")
-    center_window(change_password_window, 400, 300)
+    center_window(change_password_window, 300, 200)
 
     last_password_label = tk.Label(change_password_window, text="رمز عبود قبلی:")
     last_password_label.pack()
@@ -1105,7 +1105,13 @@ def user_page(parent_page, user_id):
     parent_page.withdraw()
     user_window = tk.Toplevel(parent_page)
     user_window.title("صفحه کاربر")
-    center_window(user_window, 400, 330)
+
+    check_admin = database_connector.check_admin(user_id)
+
+    if check_admin:
+        center_window(user_window, 400, 340)
+    else:
+        center_window(user_window, 400, 300)
 
     first_name = database_connector.get_first_name(user_id)
     user_label = tk.Label(user_window, text=f"{first_name} خوش آمدید!")
@@ -1148,8 +1154,6 @@ def user_page(parent_page, user_id):
     def change_panel():
         user_window.withdraw()
         admin_page(parent_page, user_id)
-
-    check_admin = database_connector.check_admin(user_id)
 
     if check_admin:
         change_panel_button = tk.Button(user_window, text="تغییر پنل", fg="white", bg="green", command=change_panel)
