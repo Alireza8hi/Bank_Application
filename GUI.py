@@ -298,7 +298,7 @@ def transaction(user_window, parent_page, source_account_number, destination_acc
     elif not database_connector.check_account_number(destination_account_number):
         error_label = tk.Label(parent_page, text="شماره حساب مقصد نامعتبر است!")
         error_label.pack()
-    elif not database_connector.check_amount(amount, user_id, source_account_number ):
+    elif not database_connector.check_amount(amount, user_id, source_account_number):
         error_label = tk.Label(parent_page, text="مقدار پول انتقالی قابل قبول نیست!")
         error_label.pack()
     else:
@@ -1519,6 +1519,7 @@ def admin_page(parent_page, user_id):
     admin_window = tk.Toplevel(parent_page)
     admin_window.title("صفحه ادمین")
     center_window(admin_window, 400, 330)
+
     first_name = database_connector.get_first_name(user_id)
     admin_label = tk.Label(admin_window, text=f"{first_name} خوش آمدید!")
     admin_label.pack()
@@ -1581,12 +1582,12 @@ def root_page():
     body_height = 200
     center_window(root, body_width, body_height)
 
+    background_image = tk.PhotoImage(file="IMAGES/geen_background.gif")
+    background_label = tk.Label(root, image=background_image)
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
     label = tk.Label(root, text="همراه بانک")
     label.pack()
-
-    '''image = tk.PhotoImage(file="hamrahbank_logo.gif")  # آدرس فایل نماد را در اینجا قرار دهید
-    logo = tk.Label(root, image=image)
-    logo.pack()'''
 
     register_button = tk.Button(root, text="ثبت نام", fg="white", bg="green",
                                 command=lambda: register_page(root))
