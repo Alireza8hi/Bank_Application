@@ -233,7 +233,7 @@ def register(parent_page, username, first_name, last_name, password, r_password,
             button_ok = tk.Button(message_window, text="تایید", command=close_window)
             button_ok.pack()
 
-            parent_page.destroy()
+            root.destroy()
             root_page()
         else:
             def close_window():
