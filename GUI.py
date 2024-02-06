@@ -31,7 +31,7 @@ def login_page(parent_page):
     parent_page.withdraw()
     login_window = tk.Toplevel(parent_page)
     login_window.title("صفحه ورود")
-    center_window(login_window, 400, 300)
+    center_window(login_window, 300, 200)
 
     username_label = tk.Label(login_window, text="نام کاربری:")
     username_label.pack()
@@ -1507,8 +1507,8 @@ def root_page():
     root = tk.Tk()
     root.title("همراه بانک")
 
-    body_width = 400
-    body_height = 300
+    body_width = 300
+    body_height = 200
     center_window(root, body_width, body_height)
 
     label = tk.Label(root, text="همراه بانک")
@@ -1518,21 +1518,15 @@ def root_page():
     logo = tk.Label(root, image=image)
     logo.pack()'''
 
-    button_frame1 = tk.Frame(root)
-    button_frame1.pack(pady=20)
-
-    button_frame2 = tk.Frame(root)
-    button_frame2.pack(pady=80)
-
-    register_button = tk.Button(button_frame1, text="ثبت نام", fg="white", bg="green",
+    register_button = tk.Button(root, text="ثبت نام", fg="white", bg="green",
                                 command=lambda: register_page(root))
-    register_button.pack(side=tk.LEFT, padx=10)
+    register_button.pack(pady=10)
 
-    login_button = tk.Button(button_frame1, text="ورود", fg="white", bg="green", command=lambda: login_page(root))
-    login_button.pack(side=tk.RIGHT, padx=10)
+    login_button = tk.Button(root, text="ورود", fg="white", bg="green", command=lambda: login_page(root))
+    login_button.pack(pady=10)
 
-    exit_button = tk.Button(button_frame2, text="خروج", fg="white", bg="red", command=close_window)
-    exit_button.pack(side=tk.BOTTOM, padx=10)
+    exit_button = tk.Button(root, text="خروج", fg="white", bg="red", command=close_window)
+    exit_button.pack(side=tk.BOTTOM, pady=10)
 
     root.protocol("WM_DELETE_WINDOW", on_closing)
 
