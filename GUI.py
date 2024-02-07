@@ -1443,7 +1443,7 @@ def show_account_info(result):
     message_label = tk.Label(message_window, text=f"{result[0][6]}")
     message_label.pack()
 
-    message_label = tk.Label(message_window, text="وام فعال:")
+    message_label = tk.Label(message_window, text="شماره وام فعال:")
     message_label.pack()
     active_loan_state = result[0][7]
     if result[0][7] is None:
@@ -1451,14 +1451,20 @@ def show_account_info(result):
     message_label = tk.Label(message_window, text=f"{active_loan_state}")
     message_label.pack()
 
+    block_date = result[0][8]
+    block_reason = result[0][9]
+    if result[0][8] is None:
+        block_date = "--"
+        block_reason = "--"
+
     message_label = tk.Label(message_window, text="تاریخ مسدودیت:")
     message_label.pack()
-    message_label = tk.Label(message_window, text=f"{result[0][8]}")
+    message_label = tk.Label(message_window, text=f"{block_date}")
     message_label.pack()
 
     message_label = tk.Label(message_window, text="دلیل مسدودیت:")
     message_label.pack()
-    message_label = tk.Label(message_window, text=f"{result[0][9]}")
+    message_label = tk.Label(message_window, text=f"{block_reason}")
     message_label.pack()
 
     button_ok = tk.Button(message_window, text="تایید", command=close_window)
