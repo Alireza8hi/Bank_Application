@@ -12,6 +12,7 @@ This is a test **bank mobile application** that works offline
 5. you can give loan and have transaction and pay installment with block account(show transaction successfully to user, but didn't do in database)
 6. add loan score after give money(why?), so it's not min money in last two month for loan score
 7. don't show sum_of_pay and sum_of_unpaid for installments to admin(for user show corrently)
+8. after paid all installment, account has active loan yet
 
 ---
 ### weaknesses

@@ -637,6 +637,13 @@ def get_loans_page(parent_page, user_id):
 
     result = database_connector.get_loans(user_id)
 
+    for x in range(len(result)):
+        result[x] = list(result[x])
+        if result[x][5] == 1:
+            result[x][5] = "پرداخت نشده"
+        else:
+            result[x][5] = "پرداخت شده"
+
     for record in result:
         table.insert("", tk.END, values=record)
 
