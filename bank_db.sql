@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS loan
     account_number int,
     installment_count int NOT NULL,
     installment_paid int NOT NULL default 0,
-    date datetime not null default (curdate()),
+    date date not null default (curdate()),
     foreign key (user_id) references User(user_id),
     foreign key (account_number) references Account(account_number)
 );

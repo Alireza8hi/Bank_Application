@@ -270,10 +270,10 @@ def get_accounts_page(parent_page, user_id):
 
     for x in range(len(data)):
         data[x] = list(data[x])
-        if data[x][3] >= 1:
-            data[x][3] = "دارد"
-        else:
+        if data[x][3] is None:
             data[x][3] = "ندارد"
+        else:
+            data[x][3] = "دارد"
         if data[x][4] is None:
             data[x][4] = "--"
             data[x][5] = "--"
