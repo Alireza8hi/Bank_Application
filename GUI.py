@@ -308,8 +308,11 @@ def transaction(user_window, parent_page, source_account_number, destination_acc
     elif not database_connector.check_account_number(destination_account_number):
         error_label = tk.Label(parent_page, text="شماره حساب مقصد نامعتبر است!")
         error_label.pack()
+    elif not amount.isnumeric() or int(amount) <= 0:
+        error_label = tk.Label(parent_page, text="مقدار پول نامعتبر است!")
+        error_label.pack()
     elif not database_connector.check_amount(amount, user_id, source_account_number):
-        error_label = tk.Label(parent_page, text="مقدار پول انتقالی قابل قبول نیست!")
+        error_label = tk.Label(parent_page, text="مقدار پول نامعتبر است!")
         error_label.pack()
     else:
         done = database_connector.money_transfer(user_id, source_account_number, destination_account_number, amount)
