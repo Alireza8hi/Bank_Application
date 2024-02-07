@@ -314,6 +314,12 @@ def transaction(user_window, parent_page, source_account_number, destination_acc
     elif not database_connector.check_amount(amount, user_id, source_account_number):
         error_label = tk.Label(parent_page, text="مقدار پول نامعتبر است!")
         error_label.pack()
+    elif not database_connector.check_block_account(user_id, source_account_number):
+        error_label = tk.Label(parent_page, text="شماره حساب مبدا مسدود است!")
+        error_label.pack()
+    elif not database_connector.check_block_account(user_id, destination_account_number):
+        error_label = tk.Label(parent_page, text="شماره حساب مقصد مسدود است!")
+        error_label.pack()
     else:
         done = database_connector.money_transfer(user_id, source_account_number, destination_account_number, amount)
         if done:
@@ -736,21 +742,19 @@ def loan_application(loans_window, parent_page, type, account_number, amount, us
     elif not (amount.isnumeric()) or int(amount) <= 0:
         error_label = tk.Label(parent_page, text="مقدار درخواستی قابل قبول نیست!")
         error_label.pack()
+    elif not database_connector.check_account_number(account_number):
+        error_label = tk.Label(parent_page, text="شماره حساب وارد شده معتبر نیست!")
+        error_label.pack()
+    elif not database_connector.check_loan_amount(user_id, account_number, amount):
+        error_label = tk.Label(parent_page, text="مقدار درخواستی قابل قبول نیست!")
+        error_label.pack()
+    elif not database_connector.check_block_account(user_id, account_number):
+        error_label = tk.Label(parent_page, text="شماره حساب مسدود است!")
+        error_label.pack()
+    elif database_connector.has_loan(user_id, account_number):
+        error_label = tk.Label(parent_page, text="این حساب از قبل دارای وام فعال میباشد!")
+        error_label.pack()
     else:
-        check_account_number = database_connector.check_account_number(account_number)
-        check_loan_amount = database_connector.check_loan_amount(user_id, account_number, amount)
-        has_loan = database_connector.has_loan(user_id, account_number)
-        if not check_account_number:
-            error_label = tk.Label(parent_page, text="شماره حساب وارد شده معتبر نیست!")
-            error_label.pack()
-        elif not check_loan_amount:
-            error_label = tk.Label(parent_page, text="مقدار درخواستی قابل قبول نیست!")
-            error_label.pack()
-
-        elif not has_loan:
-            error_label = tk.Label(parent_page, text="این حساب از قبل دارای وام فعال میباشد!")
-            error_label.pack()
-
         done = database_connector.loan_application(user_id, account_number, amount, type)
         if done:
             def close_window():
@@ -868,7 +872,6 @@ def result_installments_page(parent_page, result, result2, result3):
 
     paid_label = tk.Label(button_frame1, text=f"مجموع رقم پرداختی:\n{result2}")
     paid_label.pack(side=tk.RIGHT)
-
 
     if result3 is None:
         result3 = 0
