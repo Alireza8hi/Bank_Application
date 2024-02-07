@@ -505,13 +505,23 @@ def period_transactions(parent_page, account_number, start_date, end_date, user_
         error_label.pack()
     else:
         check_account_number = database_connector.check_account_number(account_number)
+        start_date_check = start_date.split("/")
+        end_date_check = end_date.split("/")
+        len_dates_check = len(start_date_check) == 3 and len(end_date_check) == 3
+        numeric_dates_check = start_date_check[0].isnumeric() and end_date_check[0].isnumeric() and start_date_check[
+            1].isnumeric() and end_date_check[1].isnumeric() and start_date_check[2].isnumeric() and end_date_check[
+                                 2].isnumeric()
         if not check_account_number:
             error_label = tk.Label(parent_page, text="شماره حساب وارد شده نامعتبر است!")
             error_label.pack()
-        start_date = datetime.strptime(start_date, "%Y/%m/%d").date()
-        end_date = datetime.strptime(end_date, "%Y/%m/%d").date()
-        result = database_connector.get_period_transactions(user_id, account_number, start_date, end_date)
-        result_transactions_page(parent_page, result)
+        elif not len_dates_check or not numeric_dates_check or not int(start_date_check[0]) > 0 or not 12 >= int(start_date_check[1]) > 0 or not 31 >= int(start_date_check[2]) > 0 or not int(end_date_check[0]) > 0 or not 12 >= int(end_date_check[1]) > 0 or not 31 >= int(end_date_check[2]) > 0:
+            error_label = tk.Label(parent_page, text="تاریخ وارد شده نامعتبر است!")
+            error_label.pack()
+        else:
+            start_date = datetime.strptime(start_date, "%Y/%m/%d").date()
+            end_date = datetime.strptime(end_date, "%Y/%m/%d").date()
+            result = database_connector.get_period_transactions(user_id, account_number, start_date, end_date)
+            result_transactions_page(parent_page, result)
 
 
 def get_period_transactions_page(user_window, user_id):
