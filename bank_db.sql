@@ -1095,6 +1095,9 @@ begin
                         update Loan
                             set is_active = 0
                         where loan_id = input_loan_id;
+                        update account
+                            set active_loan_id = null
+                        where account_number = v_account_number;
                     end if;
                     set x := true;
                 else
