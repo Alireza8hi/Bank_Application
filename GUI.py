@@ -1057,10 +1057,12 @@ def change_password(user_window, parent_page, last_password, new_password, r_new
     password_bytes = last_password.encode('utf-8')
     hash_object.update(password_bytes)
     hashed_password = hash_object.hexdigest()
+
     hash_object2 = hashlib.sha256()
     password_bytes2 = new_password.encode('utf-8')
     hash_object2.update(password_bytes2)
-    hashed_password2 = hash_object.hexdigest()
+    hashed_password2 = hash_object2.hexdigest()
+
     if not len(last_password) or not len(new_password) or not len(r_new_password):
         error_label = tk.Label(parent_page, text="اطلاعات لازم وارد نشده است!")
         error_label.pack()
