@@ -262,11 +262,21 @@ def get_accounts_page(parent_page, user_id):
     table.heading("col1", text="شماره حساب")
     table.heading("col2", text="تاریخ ایجاد")
     table.heading("col3", text="موجودی")
-    table.heading("col4", text="وام")
+    table.heading("col4", text="وام فعال")
     table.heading("col5", text="تاریخ مسدودیت")
     table.heading("col6", text="دلیل مسدودیت")
 
     data = database_connector.get_accounts(user_id)
+
+    for x in range(len(data)):
+        data[x] = list(data[x])
+        if data[x][3] >= 1:
+            data[x][3] = "دارد"
+        else:
+            data[x][3] = "ندارد"
+        if data[x][4] is None:
+            data[x][4] = "--"
+            data[x][5] = "--"
 
     for record in data:
         table.insert("", tk.END, values=record)
