@@ -320,6 +320,9 @@ def transaction(user_window, parent_page, source_account_number, destination_acc
     elif not database_connector.check_block_account(user_id, destination_account_number):
         error_label = tk.Label(parent_page, text="شماره حساب مقصد مسدود است!")
         error_label.pack()
+    elif source_account_number == destination_account_number:
+        error_label = tk.Label(parent_page, text="شماره حساب مبدا و مقصد یکسان است!")
+        error_label.pack()
     else:
         done = database_connector.money_transfer(user_id, source_account_number, destination_account_number, amount)
         if done:
