@@ -844,6 +844,13 @@ def result_installments_page(parent_page, result, result2, result3):
     table.heading("col3", text="مقدار وجه قسط")
     table.heading("col4", text="تاریخ پرداخت")
 
+    for x in range(len(result)):
+        result[x] = list(result[x])
+        if result[x][1] == 1:
+            result[x][1] = "پرداخت شده"
+        else:
+            result[x][1] = "پرداخت نشده"
+
     for record in result:
         table.insert("", tk.END, values=record)
 
@@ -853,8 +860,15 @@ def result_installments_page(parent_page, result, result2, result3):
     button_frame1 = tk.Frame(show_installments_window)
     button_frame1.pack()
 
+    if result2 is None:
+        result2 = 0
+
     paid_label = tk.Label(button_frame1, text=f"مجموع رقم پرداختی:\n{result2}")
     paid_label.pack(side=tk.RIGHT)
+
+
+    if result3 is None:
+        result3 = 0
 
     not_paid_label = tk.Label(button_frame1, text=f"مقدار پرداختی باقی مانده:\n{result3}")
     not_paid_label.pack(side=tk.LEFT)
