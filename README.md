@@ -5,7 +5,7 @@ This is a test **bank mobile application** that works offline
 ---
 ### problems
 
-1. add loan score after give money, so it's not min money in last two month for loan score
+1. loan score is minimum balance in last two months, but after first transaction
 
 ---
 ### weaknesses
