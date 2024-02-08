@@ -2,7 +2,7 @@ import database_connector
 import tkinter as tk
 from tkinter import ttk
 import hashlib
-from datetime import datetime
+from datetime import datetime, date
 
 import email_phone_number
 
@@ -960,40 +960,48 @@ def pay_installment(loans_window, parent_page, loan_number, user_id):
     else:
         check_loan_number = database_connector.check_loan_number(user_id, loan_number)
         state_loan = database_connector.state_loan(user_id, loan_number)
+        check_installments = database_connector.list_of_installment(user_id, loan_number)
+        for x in check_installments:
+            if date.today() == x[2]:
+                check_installments = False
+                break
         if not check_loan_number:
             error_label = tk.Label(parent_page, text="شماره وام وارد شده نامعتبر است!")
             error_label.pack()
         elif not state_loan:
             error_label = tk.Label(parent_page, text="قسط های این وام پرداخت شده است!")
             error_label.pack()
-
-        done = database_connector.pay_installment(user_id, loan_number)
-        if done:
-            def close_window():
-                message_window.destroy()
-
-            message_window = tk.Tk()
-            center_window(message_window, 200, 50)
-
-            message_label = tk.Label(message_window, text="پرداخت قسط با موفقیت انجام شد!")
-            message_label.pack()
-
-            button_ok = tk.Button(message_window, text="تایید", command=close_window)
-            button_ok.pack()
-
-            go_back(loans_window, parent_page)
+        elif check_installments is False:
+            error_label = tk.Label(parent_page, text="قسط امروز را پرداخت کرده اید!")
+            error_label.pack()
         else:
-            def close_window():
-                warning_window.destroy()
+            done = database_connector.pay_installment(user_id, loan_number)
+            if done:
+                def close_window():
+                    message_window.destroy()
 
-            warning_window = tk.Tk()
-            center_window(warning_window, 150, 70)
+                message_window = tk.Tk()
+                center_window(message_window, 200, 50)
 
-            warning_label = tk.Label(warning_window, text="مشکلی در عملیات پیش آمد!\n دوباره امتحان کنید.")
-            warning_label.pack()
+                message_label = tk.Label(message_window, text="پرداخت قسط با موفقیت انجام شد!")
+                message_label.pack()
 
-            button_ok = tk.Button(warning_window, text="تایید", command=close_window)
-            button_ok.pack()
+                button_ok = tk.Button(message_window, text="تایید", command=close_window)
+                button_ok.pack()
+
+                go_back(loans_window, parent_page)
+            else:
+                def close_window():
+                    warning_window.destroy()
+
+                warning_window = tk.Tk()
+                center_window(warning_window, 150, 70)
+
+                warning_label = tk.Label(warning_window, text="مشکلی در عملیات پیش آمد!\n دوباره امتحان کنید.")
+                warning_label.pack()
+
+                button_ok = tk.Button(warning_window, text="تایید", command=close_window)
+                button_ok.pack()
 
 
 def pay_installment_page(parent_window, user_id):

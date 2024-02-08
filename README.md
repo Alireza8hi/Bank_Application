@@ -5,9 +5,7 @@ This is a test **bank mobile application** that works offline
 ---
 ### problems
 
-1. if you want to pay installment in day more than 1, see raise error in database, but app run currently
-2. add loan score after give money, so it's not min money in last two month for loan score
-3. don't show sum_of_pay and sum_of_unpaid for installments to admin(for user show currently)
+1. add loan score after give money, so it's not min money in last two month for loan score
 
 ---
 ### weaknesses

@@ -366,7 +366,7 @@ begin
     into x
     from installment
     where loan_id = input_loan_id and
-          user_id = input_user_id and
+          (user_id = input_user_id or (select is_admin from User V where V.user_id = input_user_id)=1) and
           is_paid = 1;
     return x;
 end;
@@ -384,7 +384,7 @@ begin
     into x
     from installment
     where loan_id = input_loan_id and
-          user_id = input_user_id and
+          (user_id = input_user_id or (select is_admin from User V where V.user_id = input_user_id)=1) and
           is_paid = 0;
     return x;
 end;
