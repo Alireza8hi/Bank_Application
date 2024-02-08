@@ -688,7 +688,7 @@ begin
     if (select balance
         from Account A
         where A.account_number = input_account_number and
-              A.user_id = input_user_id) >= input_amount
+              (A.user_id = input_user_id or (select is_admin from User V where V.user_id = input_user_id) = 1)) >= input_amount
         then
         set x := true;
     else
