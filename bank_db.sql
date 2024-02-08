@@ -665,15 +665,6 @@ begin
     declare x bool;
     if (select is_active
         from Account A
-        where A.account_number = input_account_number and
-              A.user_id = input_user_id) = 1
-        then
-        set x := true;
-    elseif (select is_admin
-        from user u
-        where u.user_id = input_user_id)=1 and
-        (select is_active
-        from Account A
         where A.account_number = input_account_number) = 1
         then
         set x := true;
