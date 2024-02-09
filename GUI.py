@@ -1238,6 +1238,9 @@ def add_account(admin_window, parent_page, username, user_id):
     else:
         done = database_connector.add_account(user_id, user_id2)
         if done:
+            last_account_number = database_connector.get_accounts(user_id2)[-1][0]
+            database_connector.money_transfer(user_id, last_account_number, last_account_number, 0)
+
             def close_window():
                 message_window.destroy()
 
